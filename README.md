@@ -1,0 +1,1 @@
+# astarte-c-interfaces-generator
