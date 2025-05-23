@@ -1,0 +1,48 @@
+# Copyright 2025 SECO Mind Srl
+#
+# SPDX-License-Identifier: Apache-2.0
+
+[build-system]
+requires = ["setuptools>=72.1.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "astarte_interface_parser"
+description = "Utility for converting Astarte JSON interfaces into C header files."
+readme = "README.md"
+# license and classifier list:
+# https://pypi.org/pypi?%3Aaction=list_classifiers
+license = "Apache-2.0"
+dynamic = ["version"]
+dependencies = [
+    "astarte-device-sdk==0.13.4",
+    "colored==2.3.0",
+]
+requires-python = ">=3.10"
+authors = [
+  { name="Simone Orru", email="simone.orru@secomind.com" },
+]
+maintainers = [
+  {name = "Simone Orru", email = "simone.orru@secomind.com"},
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+
+[project.optional-dependencies]
+static = ["black", "isort"]
+linting = ["pylint==3.3.7", "mypy==1.15.0"]
+unit = ["pytest", "pytest-cov"]
+
+[project.urls]
+"Source Code" = "https://github.com/sorru94/astarte-c-interfaces-generator"
+
+[tool.setuptools]
+packages = ["astarte_interface_parser"]
+
+[tool.setuptools.dynamic]
+version = {attr = "astarte_interface_parser.__version__"}
+
+[project.scripts]
+parse-interfaces = "astarte_interface_parser.converter:main"
