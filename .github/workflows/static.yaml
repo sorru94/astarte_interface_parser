@@ -1,0 +1,29 @@
+# (C) Copyright 2025, SECO Mind Srl
+#
+# SPDX-License-Identifier: Apache-2.0
+
+name: Static analysis Python code.
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  format-check:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: format-check-${{ github.ref }}
+      cancel-in-progress: true
+    steps:
+    - uses: actions/checkout@v4
+    - name: Check formatting
+      run: ./format.sh --check-only
+  lint-check:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: clang-tidy-check-${{ github.ref }}
+      cancel-in-progress: true
+    steps:
+    - uses: actions/checkout@v4
+    - name: Run linter
+      run: ./lint.sh
