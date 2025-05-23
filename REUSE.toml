@@ -1,0 +1,13 @@
+# (C) Copyright 2025, SECO Mind Srl
+#
+# SPDX-License-Identifier: Apache-2.0
+
+version = 1
+SPDX-PackageName = "Astarte C interfaces generator"
+SPDX-PackageDownloadLocation = "https://github.com/sorru94/astarte_interface_parser"
+
+[[annotations]]
+path = "tests/interfaces/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "SECO Mind Srl"
+SPDX-License-Identifier = "Apache-2.0"
